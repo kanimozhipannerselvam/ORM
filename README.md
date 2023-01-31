@@ -11,19 +11,55 @@ Include your ER diagram here
 
 ### STEP 1:
 
-### STEP 2:
+Create a new Django project using "django-admin startproject", get into the project terminal and use "python3 manage.py startapp"command.
 
-### STEP 3:
+# STEP 2:
+Define a model for the Employee Table in the models.py. Allow host access and add the app name under installed apps in settings.py
 
-Write your own steps
+# STEP 3:
+Register the models with the Django admin site. In admin.py under app folder, register the models with Django admin site.
 
-## PROGRAM
+# STEP 4:
+Run the python manage.py makemigrations and python manage.py migrate commands to create the necessary database tables for the Employee Table model. Run the server using "python3 manage.py runserver 0:80" command
 
-Include your code here
+# PROGRAM
+```
+# models.py
 
+from django.db import models
+
+from django.contrib import admin
+
+# Create your models here.
+
+from django.db import models
+from django.contrib import admin
+# Create your models here.
+class Employee(models.Model):
+    EMP_ID=models.CharField(primary_key=True,max_length=20,help_text="reference number")
+    ENAME=models.CharField(max_length=100)
+    POST=models.CharField(max_length=100)
+    SALARY=models.IntegerField()
+    AGE=models.IntegerField(null=32)
+
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display=('EMP_ID','ENAME','POST','SALARY','AGE')
+
+# admin.py
+
+from django.contrib import admin
+from .models import Employee,EmployeeAdmin
+
+# Register your models here.
+admin.site.register(Employee,EmployeeAdmin)
+```
 ## OUTPUT
 
-Include the screenshot of your admin page.
+
+![ex-2](https://user-images.githubusercontent.com/119476060/215697338-0c19474a-ca2f-42cc-ba08-0405afb2a88a.png)
+
+
 
 
 ## RESULT
+the ORM tabe is executed successfully
